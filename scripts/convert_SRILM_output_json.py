@@ -7,6 +7,7 @@ def extract(fileName, filePath, outputDir):
 	with open(filePath) as f:
 		content = f.read()
 		sentence_blocks = content.split('\n\n')
+		sentences_json = []
 
 		for sentence_index in range(0, len(sentence_blocks)-1):
 			sentence = sentence_blocks[sentence_index]
@@ -19,11 +20,11 @@ def extract(fileName, filePath, outputDir):
 
 			sentence_tokens = []
 
-			for token_line_index in range(2, lines_num-3):
+			for token_line_index in range(1, lines_num-3):
 				token_line = lines[token_line_index]
 				token_line_split_items = token_line.split(' ')
 
-				token_index = token_line_index - 1
+				token_index = token_line_index
 				token_word = token_line_split_items[1]
 				raw_cxt = token_line_split_items[6]
 				token_cxt = raw_cxt[1 : len(raw_cxt)-1]
@@ -36,12 +37,6 @@ def extract(fileName, filePath, outputDir):
 				sentence_token["cxt"] = token_cxt
 
 				sentence_tokens.append(sentence_token)
-				
-				#print ('--------->')
-				#print (token_index)
-				#print (token_word)
-				#print (cxt)
-				#print (prob)
 
 			sentence_json = {}
 			sentence_json["index"] = sentence_index
@@ -49,6 +44,8 @@ def extract(fileName, filePath, outputDir):
 			sentence_json["sentenceLogprob"] = sentence_sentenceLogprob
 			sentence_json["OOV"] = sentence_OOV
 			sentence_json["tokens"] = sentence_tokens
+
+			sentences_json.append(sentence_json)
 
 	doc_info = sentence_blocks[len(sentence_blocks)-1].split('\n')
 	doc_info_file = doc_info[0]
@@ -61,11 +58,14 @@ def extract(fileName, filePath, outputDir):
 	doc_info["perplexity"] = doc_info_perplexity
 
 	processed_sentences["doc_info"] = doc_info
-	processed_sentences["sentences"] = sentence_json
+	processed_sentences["sentences"] = sentences_json
 
-	json_str = json.dumps(processed_sentences, ensure_ascii=False)
-	print (json_str)
+	json_str = json.dumps(processed_sentences, ensure_ascii=False, indent=4, separators=(',', ': '))
 	
+	output = open(outputFile, "w") 
+	output.write(json_str) 	
+	output.close() 
+
 	print ("Saved {0}".format(outputFile))
 	return
 
