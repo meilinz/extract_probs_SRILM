@@ -1,0 +1,55 @@
+{
+    "docInfo":{
+        "file": "file /om/data/public/text-corpora/sogoucs-2008/SRILM_modeling/test_data/toy_file_010801: 29532 sentences, 795355 words, 1011 OOVs",
+        "perplexity": "0 zeroprobs, logprob= -1343546 ppl= 42.73293 ppl1= 49.135"
+    },
+    "sentences":[
+        {
+            "index": 0,
+            "indexNoEmptyLine": 0,
+            "text": "纯色 毛衣 胜 在 颜色 与 款式 ， 而 花样 毛衣 的 魅力 则 在于 新意 辈出 的 图案 ， 让 你 化身 第一 眼 美女 ， 瞬间 就 能 吸引 住 他 的 视线 ！",
+            "sentenceLogprob": -22.55169,
+            "ppl": 4.069165,
+            "ppl1": 4.230931,
+            "OOV": 0,
+            "tokens":[
+                {
+                    "index": 1,
+                    "word": "纯色",
+                    "prob": 2.781205e-06,
+                    "cxt": "2gram"
+                },
+                {
+                    "index": 2,
+                    "word": "毛衣",
+                    "prob": 0.1313579,
+                    "cxt": "3gram"
+                }
+            ]
+
+        },
+        {
+            "index": 1,
+            "indexNoEmptyLine": 1,
+            "text": "推荐 理由 ： 粉色 长 针织衫 显得 妩媚 动人 加上 一 件 外套 增添 了 几 分 随意 的 感觉 ， 显得 更为 阳光 。",
+            "sentenceLogprob": -53.83016,
+            "ppl": 117.5955,
+            "ppl1": 142.3005,
+            "OOV": 0,
+            "tokens":[
+                {
+                    "index": 1,
+                    "word": "推荐",
+                    "prob": 0.0001088986,
+                    "cxt": "2gram"
+                },
+                {
+                    "index": 2,
+                    "word": "理由",
+                    "prob": 0.4005367,
+                    "cxt":"3gram"
+                }
+            ]
+        }
+    ]
+}
